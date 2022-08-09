@@ -70,5 +70,5 @@ class FileUpload(InputBase):
         super(FileUpload, self).__init__(lambda:'', update)
         self.html = Form.FileUpload(name).html
         self.title = title
-            
+
         
