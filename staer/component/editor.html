@@ -1,0 +1,33 @@
+<article class="card c{width}-{height}" style="overflow:visible;height:fit-content;">
+    <h1>{title}</h1>
+    <div class="filebar" id="filebar-{id}">
+        
+        <div onclick="editor{id}.openNew()" class="filebar-create-new" title="Opret ny">
+            <span class="material-symbols-outlined">add</span>
+        </div>
+        
+        {files}
+
+    </div>
+    <input type="text" id="editor-name-{id}" class="editor-filename" onfocusout="editor{id}.rename(this)" placeholder="Unavngivet fil"/>
+    <div id="editor-{id}"></div>
+    <button onclick="editor{id}.save();" class="editor-save"><span class="material-symbols-outlined">save</span>Gem</button>
+    <button onclick="editor{id}.delete();" class="editor-delete"><span class="material-symbols-outlined">delete</span>Slet</button>
+</article>
+
+<script>
+var quill{id} = new Quill('#editor-{id}', {
+    modules: {
+        toolbar: [
+            [{ header: [false, 1, 2] }],
+            ['bold', 'italic'],
+            ['image'],
+        ],
+  },
+  theme: 'snow',
+});
+
+const editor{id} = new EditorHandler(quill{id},{id});
+
+
+</script>

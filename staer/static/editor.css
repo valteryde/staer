@@ -1,0 +1,129 @@
+
+/* buttons */
+button.editor-save {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+button.editor-delete {
+    margin:10px;
+}
+
+button.editor-delete, button.editor-save {
+    position: relative;
+    padding:4px;
+    margin-top: 20px;
+    border-color: grey;
+}
+
+button.editor-delete span, button.editor-save span {
+    vertical-align: middle;
+}
+
+button.editor-delete:hover {
+    background-color: #ff6961!important;
+}
+
+button.editor-save:hover {
+    background-color: lightgreen!important;
+}
+
+/* filepreview */
+.filebar {
+    position: relative;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    margin-bottom:10px;
+}
+
+.filebar-file {
+    margin:4px;
+    height:50px;
+    background:var(--lightgrey);
+    box-shadow: 0 0 10px 1px rgb(230,230,230);
+    min-width:50px;
+    border-radius:2px;
+    cursor: pointer;
+    overflow:hidden;
+}
+
+.filebar-file:first-of-type {
+    margin-left:0;
+}
+
+.filebar-file .icon {
+    vertical-align: middle;
+}
+
+.filebar-file div {
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+    margin-left:10px;
+    margin-right:10px;
+}
+
+
+.filebar-file::after, .filebar-file::before {
+    position: absolute;
+    opacity:0;
+    transition: opacity 200ms;
+}
+
+.filebar-file::after {
+    content:"Åben";
+    left:50%;
+    margin:0;
+    padding:0;
+    top:50%;
+    transform: translate(-50%, -50%);
+    z-index:999;
+    color:white;
+}
+
+
+.filebar-file::before {
+    content:"";
+    z-index:998;
+    background:rgba(80,80,80,.8);
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+
+.filebar-file:hover::after, .filebar-file:hover::before {
+    opacity:1;
+}
+
+.filebar-create-new {
+    position: relative;
+    width:50px;
+    height:50px;
+    cursor: pointer;
+}
+.filebar-create-new:last-child {
+    display:none;
+}
+
+
+.filebar-create-new span {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    font-size:2em;
+    transform-origin: center;
+    transition: transform 500ms;
+}
+
+.filebar-create-new:hover span {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.editor-filename {
+    position: relative;
+    width:fit-content;
+    border: solid 1px transparent;
+}

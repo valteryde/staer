@@ -1,0 +1,31 @@
+
+<article class="card c{width}-{height}" id="file-{id}">
+    <h1>Filer i "{folderName}"</h1>
+    <div class="folder-toolbar">
+        <span class="material-symbols-outlined" data-color="lightgrey" onclick="file{id}.mode('copy', this)">
+            content_copy
+        </span>
+        <span class="material-symbols-outlined" data-color="lightgrey" onclick="file{id}.mode('open', this)">
+            open_in_new
+        </span>
+        <span class="material-symbols-outlined" data-color="red" onclick="file{id}.mode('del', this)" style="{show}">
+            delete
+        </span>
+        <span class="material-symbols-outlined" data-color="green" onclick="file{id}.mode('download', this)">
+            download
+        </span>
+        <span class="material-symbols-outlined" onclick="file{id}.upload(this.nextElementSibling)">
+            file_upload
+        </span>
+        <form action="/admin/uploadFile" method = "POST" enctype=multipart/form-data>
+            <input type="file" name="file" id="" class="file-upload" oninput="file{id}.setPath(this.nextElementSibling);this.parentElement.submit()">
+            <input type="hidden" name="path" value="">
+        </form>
+        <span class="material-symbols-outlined" onclick="file{id}.goToParent(this)">
+            reply
+        </span>
+    </div>
+    <div class="folder-wrapper">
+        {files}
+    </div>
+</article>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Admin</title>
+
+    <style>
+    
+        :root {
+            --c1 : {mainColor};
+            --c2 : {secondColor};
+        }
+
+        body {
+            background-color: rgb(240,240,245);
+        }
+
+
+        div#wrapper {
+            position: fixed;
+            left:0;
+            top:0;
+            width:100vw;
+            height:100vh;
+            overflow:hidden;
+        }
+
+        div#card {
+            position: absolute;
+            height:400px;
+            width:400px;
+            top: 50%;
+            box-shadow: 0 0 10px 4px lightgray;
+            border: solid 1px lightgrey;
+            border-radius: 10px;
+            overflow:hidden;
+            right: 100px;
+            transform:translateY(-50%);
+            background:white;
+        }
+        
+        #info {
+            position: absolute;
+            top:50%;
+            left:100px;
+            transform:translateY(-50%);
+            display:flex;
+            flex-direction: column;
+        }
+
+        #info * {
+            margin:2px;
+        }
+
+        #info h1 {
+            font-family: Helvetica;
+            font-size:2.5em;
+            font-weight: 100;
+        }
+
+        #info img {
+            position: relative;
+            width:50px;
+            height:50px;
+        }
+
+        #card input {
+            position: absolute;
+            width: calc(90% - 10px);
+            left: 5%;
+            height:15%;
+            margin:0;
+            padding:0;
+            border:solid 1px lightgrey;
+            border-radius: 4px;
+            padding-left:4px;
+            padding-right:4px;
+            font-size:2em;
+        }
+
+        #card input[name=username]:focus, #card input[name=psw]:focus {
+            outline: solid 2px var(--c1);
+        }
+
+        #card input[name=username] {
+            top: 20%;
+        }
+
+        #card input[name=psw] {
+            top: 40%;
+        }
+
+        #card input[type=submit] {
+            top: 60%;
+            width:90%;
+            background-color:lightgrey;
+            color:black;
+            cursor:pointer;
+            transition: color 100ms, background-color 100ms;
+        }
+
+        #card input[type=submit]:hover {
+            background-color:whitesmoke;
+            color:black;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="wrapper">
+        
+        <div id="info">
+            <img src="{logoSRC}">
+            <h1>{name}</h1>
+        </div>
+
+
+        <div id="card">
+
+            <form action="/admin/login" method="post">
+                <input type="hidden" name="route" value="{clb}">
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="psw" id="psw"  placeholder="Password">
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        document.cookie = 'token=';
+    </script>
+
+</body>
+</html>

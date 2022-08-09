@@ -1,0 +1,45 @@
+
+#modal-confirm-alert {
+    position: fixed;
+    left:50%;
+    display:none;
+    top:50%;
+    z-index:9999;
+    transform:translate(-50%, -50%);
+    width:500px;
+    min-height:100px;
+    padding:20px;
+    flex-direction: column;
+    background:white;
+    border-radius:4px;
+}
+
+#modal-confirm-alert h1 {
+    position: relative;
+    font-weight: 400;
+}
+
+#modal-backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display:none;
+    z-index:9998;
+    width:100vw;
+    height:100vh;
+    background:black;
+    opacity: .4;
+}
+
+#modal-confirm-alert button {
+    padding:10px;
+    margin-bottom:15px;
+}
+
+#modal-confirm-alert button:last-of-type {
+    margin-left: 10px;
+}
+
+#modal-confirm-alert button:first-of-type:last-of-type {
+    margin-left:0;
+}
