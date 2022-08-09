@@ -79,7 +79,7 @@ class Admin:
         self.template = self.template.replace('{pageMarks}', html)
 
         # add colors
-        self.template = self.template.replace('{mainColor}', opt["mainColor"])
+        self.template = self.template.replace('{mainColor}', opt["color"])
 
         self.index = AdminHTMLView(self.addHTMLToTemplate('<article class="card c1-1"><h1>Admin</h1><p>En admin side indeholder alt hvad den kommende admin skal bruge i de daglige opgaver på dets hjemmeside</p></article>'))
         self.app.add_url_rule('/admin', view_func=self.index.view)
