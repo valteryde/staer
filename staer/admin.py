@@ -95,7 +95,7 @@ class Admin:
         self.cred = {} #dict
         self.tokens = {} #dict
         self.loginHTML = open(os.path.join(self.absPath, 'login.html'), 'r').read()
-        self.loginHTML = self.loginHTML.replace('{mainColor}', opt["mainColor"])
+        self.loginHTML = self.loginHTML.replace('{mainColor}', opt["color"])
         self.loginHTML = self.loginHTML.replace('{logoSRC}', opt["logo"])
         self.loginHTML = self.loginHTML.replace('{name}', opt["name"])
         self.app.add_url_rule('/admin/login', view_func=self.login, methods = ['POST'])
