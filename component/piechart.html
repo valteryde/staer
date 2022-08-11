@@ -1,0 +1,21 @@
+<article class="card c{width}-{height}">
+	<h1>{title}</h1>
+	<canvas id="{id}" style="position: relative; width: 100%"></canvas>
+</article>
+
+<script>
+new Chart('{id}', {
+  type: "pie",
+  data: {
+    labels: {label},
+    datasets: [{
+      backgroundColor: ["#003f5c", "#58508d", "#bc5090", "#ff6361", "#ffa600"],
+      data: {val}
+    }]
+  },
+  options: {
+    
+  }
+});
+
+</script>

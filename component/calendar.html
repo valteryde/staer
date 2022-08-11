@@ -1,0 +1,21 @@
+<article class="card c{width}-{height}" style="overflow:visible">
+    <h1 style="margin-bottom:120px;">{title}</h1>
+    <div class="cal-container" id="cal{id}"></div>
+</article>
+
+<script>
+    var cal{id}
+    setTimeout(() => {
+        cal{id} = new Calender('#cal{id}', '{id}');
+
+        var times{id} = {times}
+
+        for (let i = 0; i < times{id}.length; i++) {
+            cal{id}.add(...times{id}[i]);
+        }
+
+        cal{id}.showEvents()
+
+
+    }, 200);
+</script>

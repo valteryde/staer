@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" rel="stylesheet" />
+    <style>
+        :root {
+            --c1 : {mainColor};
+            --c2 : {secondColor};
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+    {import}
+
+    {head}
+
+</head>
+<body>
+
+    <div id="navbar">
+        <div id="navbar-far-right">
+            <div>
+                <span onclick="window.location = '/admin/logout'" class="material-symbols-outlined">logout</span>
+            </div>
+            <div>
+                <span class="material-symbols-outlined" onclick="window.location.reload();">refresh</span>
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+
+        <div id="logo-container">
+            <img id="logo" src="{logoSRC}" alt="" onclick="window.location = '/admin'">
+        </div>
+        <div id="sidebar-inner">
+            {pageMarks}
+        </div>
+
+    </div>
+
+    <div id="content-outer-wrapper">
+        <div id="content-wrapper">
+            <article class="c3-1" id="navigation-info">
+                <p style="margin:0;">Admin / {nameOfPage}</p>
+            </article>
+            {body}
+            <div style="height:var(--content-padding);grid-column: 1 / span 3"></div>
+        </div>
+    </div>
+
+    <!-- cards span fix -->
+    <script>
+        
+        const cards = document.querySelectorAll('.card');
+        var pos = 1;
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            let span = parseInt(card.classList.item(1).replace('c', '').split('-')[0]);
+
+            if (pos+span > 4) {
+                pos = 1
+            }
+
+            card.style['grid-column'] = `${pos} / span ${span}`
+            pos += span;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+
+.table-wrapper {
+    position: relative;
+    height:fit-content;
+    width:100%;
+    overflow:scroll;
+    border-radius:2px;
+}
+
+table {
+    position: relative;
+    width:100%;
+    border-collapse: collapse;
+    border-radius:4px;
+}
+
+th {
+    font-weight: normal;
+}
+
+tr::after {
+    position: absolute;
+    content: "";
+    height:6px;
+    width:100%;
+    left:0;
+    background:white;
+}
+
+tr {
+    position: relative;
+    background-color: var(--grey);
+}
+
+
+tr:first-of-type {
+    background:white;
+    color:black;
+}
+
+td, th {
+    position: relative;
+    text-align: left;
+    padding: 6px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+th {
+    padding-bottom:5px;
+}
+
+table input {
+    position: relative;
+
+    background:transparent;
+    /* width:fit-content; */
+    min-width:20px;
+    outline: solid 1px transparent;
+    font-size:1em;
+    border: solid 1px transparent;
+    border-radius: 4px;
+}
+
+.delete-bucket {
+    background-color:red;
+    cursor:pointer;
+    color:white;
+    left: -10px;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    border-radius:4px;
+    transition: background-color 200ms, color 200ms;
+}
+
+tr:nth-child(odd) .delete-bucket:hover {
+    background-color: lightgrey;
+    color:black;
+}
+
+tr:nth-child(even) .delete-bucket:hover {
+    background-color: white;
+    color:black;
+}
+
+table td.changed-content::after {
+    content:"";
+    position: absolute;
+    bottom: 10%;
+    background-color:orange;
+    left:2%;
+    width:96%;
+    height:2px;
+}
+
+.uncommited-changes {
+    position: relative;
+}
+
+.uncommited-changes::after {
+    content:"save changes by pressing enter";
+    position: absolute;
+    right:0;
+    top:20px;
+    font-weight: normal;
+    font-size:16px;
+    color:black;
+}
+
+
+table tr:last-child {
+    border-radius: 4px;
+}
+
+.table-create-new {
+    position: relative;
+    margin-top: 20px;
+    background:green;
+    color: white;
+    border-radius:4px;
+    border:none;
+}
+
+.table-create-new span {
+    color: inherit;
+}
+
+table img {
+    position: relative;
+    width:50px;
+    cursor: text;
+}
+
+input.table-hidden {
+    display:none;
+}
+img.table-hidden {
+    display:none;
+}
+
+span.table-hidden {
+    display:none;
+}
+
+input.table-input-search {
+    position: relative;
+    width: 200px;
+    left: 0;
+    margin-bottom: 20px;
+    border: solid 1px black;
+    border-radius:2px;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

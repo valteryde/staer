@@ -1,0 +1,303 @@
+
+:root {
+    --cal-week-offset: 35px;
+    --cal-gap: 1px;
+    --cal-overhead-height: 40px;
+    --cal-overgap: 8px;
+    --cal-toolbar-height: 50px;
+    --time-height: 20px;
+    --cal-extra-top: 2;
+    --cal-event-gap: 5px;
+}
+
+
+.cal-container {
+    position: relative;
+    left:0;
+    width: 100%;
+}
+
+.cal-wrapper {
+    position: relative;
+    left: 2%;
+    width:96%;
+    height:calc(90% - 30px - var(--cal-overhead-height) - var(--cal-overgap) - var(--cal-toolbar-height));
+    margin-top: calc(var(--cal-overhead-height) + var(--cal-overgap) + var(--cal-toolbar-height));
+    margin-bottom: 100px;
+    display:grid;
+    grid-gap:var(--cal-gap);
+    grid-template-columns: 1fr;
+}
+
+.cal-overhead {
+    position: absolute;
+    width:100%;
+    top: calc(-1 * var(--cal-overhead-height) * .5 + 10px);
+}
+
+.cal-overhead p {
+    position: relative;
+    margin:0;
+    padding:0;
+}
+
+.cal-overhead span {
+    position: absolute;
+    bottom:0;
+    font-size: 1.25em;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.cal-week, .cal-overhead {
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    width:calc(100% - var(--cal-week-offset));
+    grid-gap: var(--cal-gap);
+    margin-left: var(--cal-week-offset);
+}
+
+.cal-week {
+    position: relative;
+}
+
+
+.cal-week::after {
+    content:attr(data-week-number);
+    position: absolute;
+    left: calc(-1 * var(--cal-week-offset));
+    width:var(var(--cal-week-offset));
+    text-align: center;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+    color:black;
+}
+
+.cal-date {
+    position: relative;
+    width:100%;
+    border:solid 1px black;
+    border-radius:1px;
+    height:100%;
+    cursor:pointer;
+}
+
+.cal-date.notactive .cal-date-show-extra {
+    background:lightgrey;
+}
+
+
+.cal-date-show-extra {
+    padding: 10px;
+    position: absolute;
+    left: 50%; top:50%;
+    min-width: 100%;
+    cursor: default;
+    width:fit-content;
+    display: none;
+    min-height:100%;
+    z-index: 9;
+    transform:translate(-50%, -50%);
+    background:white;
+    border: solid 1px black;
+    border-radius:2px;
+    flex-direction: column;
+    gap: var(--cal-event-gap);
+}
+
+.cal-date-show-extra div {
+    position: relative;
+    height:calc(var(--time-height) * 1.2);
+    min-width: 90%;
+    padding-left: 5px;
+    padding-right: 5px;
+    color:black;
+    
+}
+
+.cal-date-show-extra p {
+    position: relative;
+    text-align: center;
+    top: 50%;
+    white-space: nowrap;
+    margin:0;
+    font-size: .9em;
+    transform:translateY(-50%);
+}
+
+.cal-date-show-extra span {
+    vertical-align: middle;
+    color:white;
+    cursor:pointer;
+}
+
+.cal-date-show-extra span:hover {
+    color:darkred;
+}
+
+.cal-extra-events-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:100%;
+    z-index:8;
+    height:100%;
+    overflow:hidden;
+}
+
+.cal-date.extra-events .cal-extra-events-container::before {
+    position: absolute;
+    content:"Se mere";
+    left: 50%;
+    top:50%;
+    white-space: nowrap;
+    padding: 4px;
+    background:white;
+    /* box-shadow: 0 0 10px 1px lightgrey; */
+    font-size: .9em;
+    border-radius: 2px;
+    opacity: 0;
+    transform:translate(-50%, -50%);
+    z-index: 8;
+    border: solid 1px black;
+    transition: opacity 200ms;
+}
+.cal-date.extra-events .cal-extra-events-container:hover::before {
+    opacity: 1;
+}
+
+.cal-date.extra-events .cal-extra-events-container::after {
+    position: absolute;
+    left: 7px;
+    opacity: .5;
+    width: calc(100% - 14px);
+    height: 0;
+    content:"";
+    box-shadow: 0 0 10px 4px rgb(111, 111, 111);
+    bottom: 0;
+}
+
+
+.cal-date-number {
+    position: absolute;
+    left: 5px;
+    top:5px;
+    margin:0;
+    font-size:1em;
+}
+
+.cal-date-inner {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    height:69%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.cal-date-time {
+    position: absolute;
+    height: var(--time-height);
+    left: 5%;
+    width:90%;
+    background:var(--c1);
+    border-radius:4px;
+    overflow:hidden;
+    z-index: 2;
+}
+
+.cal-date-time p {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin:0;
+    font-size: .8em;
+    transform:translateY(-50%);
+    color:black;
+}
+
+
+.cal-date.notactive {
+    background:lightgrey;
+}
+
+.cal-date.today .cal-date-number {
+    border-bottom: solid 1px  black;
+}
+
+.cal-toolbar {
+    position: absolute;
+    left: 0;
+    top: calc(-1 * (var(--cal-toolbar-height) + var(--cal-overgap) + var(--cal-overhead-height)));
+    width:100%;
+    height:var(--cal-toolbar-height);
+    display:flex;
+    gap:8px;
+    flex-direction: row;
+}
+
+.cal-toolbar::after {
+    content:"";
+    position: absolute;
+    right:0;
+    bottom: -2px;
+    width:100%;
+    height:1px;
+    border-radius: 2px;
+    background:rgba(0,0,0,.1);
+}
+
+.cal-toolbar > div {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr;
+    height:100%;
+}
+
+.cal-toolbar img, .cal-toolbar button {
+    position: relative;
+    top:calc(var(--cal-toolbar-height) * .2);
+    height:calc(var(--cal-toolbar-height) * .6);
+    width:auto;
+    cursor: pointer;
+}
+
+.cal-toolbar button {
+    width: fit-content;
+    cursor: pointer;
+    background-color:black;
+    color:white;
+    border:none;
+    padding:4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius:2px;
+    font-size:1em;
+    transition: background-color 300ms, color 300ms;
+}
+
+.cal-toolbar button:hover {
+    color:black;
+    background-color: lightgrey;
+}
+
+.cal-toolbar p {
+    position: relative;
+    top: 50%;
+    transform:translateY(-50%);
+    margin:0;
+    font-size: 2em;
+    height:fit-content;
+}
+
+
+.cal-filler {
+    position: absolute;
+    display:none;
+}
