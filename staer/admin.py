@@ -81,14 +81,17 @@ class Admin:
         # add colors
         self.template = self.template.replace('{mainColor}', opt["color"])
 
-        self.index = AdminHTMLView(self.addHTMLToTemplate('<article class="card c1-1"><h1>Admin</h1><p>En admin side indeholder alt hvad den kommende admin skal bruge i de daglige opgaver på dets hjemmeside</p></article>'))
-        self.app.add_url_rule('/admin', view_func=self.index.view)
-
         # pages
         if opt.get('pages'):
             self.pages = opt["pages"]
             for page in self.pages:
                 self.addRule(page)
+
+        if len(opt.get('pages')) > 0:
+            self.index = lambda: flask.redirect('/admin/{}'.format(opt.get('pages')[0]))
+        else:
+            self.index = AdminHTMLView(self.addHTMLToTemplate('<article class="card c1-1"> <h1>Hej verden</h1> <p>Ingen sidder er oprettet</p> </article>', '')).view
+        self.app.add_url_rule('/admin', view_func=self.index)
 
 
         # login system
@@ -194,9 +197,20 @@ class Admin:
             pass
         return flask.redirect('/admin')
 
-
     def loginRoute(self):
         html = self.loginHTML
         html = html.replace('{clb}', flask.request.url.replace(flask.request.url_root, ''))
         return html
-    
+
+
+def route():
+    flask.request.valter = ''
+
+def update():
+    pass
+
+
+# create a prettier login page
+# create custom buttons in table
+# create route funciton and update method (attatching something to flask.request)
+
