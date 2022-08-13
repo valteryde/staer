@@ -69,7 +69,13 @@ class Admin:
         self.template = self.template.replace('{import}', html)
 
         # add name to template
-        self.template = self.template.replace('{logoSRC}', opt["logo"])
+        if opt.get('logo'):
+            self.template = self.template.replace('{logo}', """<img id="logo" src="{}" alt="" onclick="window.location = '/admin'">""".format(opt["logo"]))
+        else:
+            self.template = self.template.replace('{logo}', '')
+
+        if not opt.get('logo'):
+            self.template = self.template.replace('{name}', '<p id="name-top-nav">{}</p>'.format(opt["name"]))
 
         # add page links
         html = ''
@@ -99,7 +105,11 @@ class Admin:
         self.tokens = {} #dict
         self.loginHTML = open(os.path.join(self.absPath, 'login.html'), 'r').read()
         self.loginHTML = self.loginHTML.replace('{mainColor}', opt["color"])
-        self.loginHTML = self.loginHTML.replace('{logoSRC}', opt["logo"])
+        if opt.get('logo'):
+            self.loginHTML = self.loginHTML.replace('{logo}', '<img src="{}">'.format(opt["logo"]))
+        else:
+            self.loginHTML = self.loginHTML.replace('{logo}', '')
+        
         self.loginHTML = self.loginHTML.replace('{name}', opt["name"])
         self.app.add_url_rule('/admin/login', view_func=self.login, methods = ['POST'])
         self.app.add_url_rule('/admin/logout', view_func=self.logout)

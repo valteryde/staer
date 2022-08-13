@@ -281,3 +281,11 @@ input[type="submit"] {
     cursor:pointer;
 }
 
+#name-top-nav {
+    position: relative;
+    top: 50%;
+    transform:translateY(-50%);
+    margin:0;
+    font-size: 1.25em;
+    margin-left: 10px;
+}

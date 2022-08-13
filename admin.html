@@ -24,6 +24,8 @@
 <body>
 
     <div id="navbar">
+        {name}
+
         <div id="navbar-far-right">
             <div>
                 <span onclick="window.location = '/admin/logout'" class="material-symbols-outlined">logout</span>
@@ -36,7 +38,7 @@
     <div id="sidebar">
 
         <div id="logo-container">
-            <img id="logo" src="{logoSRC}" alt="" onclick="window.location = '/admin'">
+            {logo}
         </div>
         <div id="sidebar-inner">
             {pageMarks}
